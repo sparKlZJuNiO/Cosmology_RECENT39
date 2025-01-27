@@ -43,7 +43,7 @@ public class EnemyBulletScript : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+        private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player") && enemy.GetComponent<Health>().death == false)
         {
@@ -51,6 +51,7 @@ public class EnemyBulletScript : MonoBehaviour
             {
                 other.gameObject.GetComponent<PlayerHealth>().currentHealth -= 20;
                 player2.enabled = false;
+                Destroy(gameObject);
             }
         }
 

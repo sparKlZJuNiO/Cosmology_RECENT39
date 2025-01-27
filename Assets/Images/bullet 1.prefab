@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 3631433876372946234}
   m_Layer: 0
   m_Name: bullet 1
-  m_TagString: Untagged
+  m_TagString: bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -29,7 +29,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3906276582739438995}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0.999919, w: -0.012728095}
+  m_LocalRotation: {x: -0, y: 0, z: -0.99991894, w: -0.012731771}
   m_LocalPosition: {x: 38.675, y: 18.735, z: 0}
   m_LocalScale: {x: 5.5962, y: 2.3084326, z: 5.5962}
   m_ConstrainProportionsScale: 0
@@ -128,6 +128,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 0}
+  player2: {fileID: 0}
+  enemy: {fileID: 0}
   force: 27.3
 --- !u!61 &8555400550110128972
 BoxCollider2D:
@@ -161,7 +163,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00009008497, y: 0.00012011081}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -172,7 +174,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.16482009, y: 0.13656788}
   m_EdgeRadius: 0
 --- !u!96 &3631433876372946234
 TrailRenderer:

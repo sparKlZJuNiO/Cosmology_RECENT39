@@ -8,11 +8,12 @@ using UnityEngine.InputSystem.LowLevel;
 
 public class Health : MonoBehaviour
 {
-    [SerializeField] private int health = 1;
+    [SerializeField] public int health = 1;
 
     //private int MAX_HEALTH = 1;
 
-   [SerializeField] public bool death = false;
+
+    [SerializeField] public bool death = false;
 
     private bool grounded = false;
 
@@ -39,6 +40,11 @@ public class Health : MonoBehaviour
         {
             Touched = true; // How many times has the player collided with the enemy
         }
+
+         if (collision.gameObject.tag == ("bullet"))
+            {
+            Die();
+            }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -100,7 +106,7 @@ public class Health : MonoBehaviour
     }
     */
 
-    private void Die()
+    public void Die()
     {
         //Debug.Log("I am dead");
         death = true;
