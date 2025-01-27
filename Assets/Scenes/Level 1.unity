@@ -2118,7 +2118,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2.84
+  m_GravityScale: 2.61
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -2236,7 +2236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 18
-  jumpPower: 14.15
+  jumpPower: 11.54
   outdoorLight: {fileID: 1849716711}
   jumpCooldown: 1.08
   jumpCooldown2: 1.59
@@ -2265,7 +2265,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 2
+  m_GravityScale: 3.49
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
