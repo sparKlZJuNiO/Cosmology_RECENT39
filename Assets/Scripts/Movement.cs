@@ -83,6 +83,8 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.tag == ("isOnGround"))
         {
             grounded = false;
+            boostAttack = false;
+            anim.SetBool("boostattacking", boostAttack);
             //Debug.Log("not!");
         }
     }
@@ -105,13 +107,14 @@ public class Movement : MonoBehaviour
             moving = false;
             attacking = false;
             anim.SetBool("attacking", attacking);
-            if (Input.GetMouseButton(0))
+            if (Input.GetMouseButton(0) && grounded == true)
             {
                 boostAttack = true;
             }
-            else
+            else if (Input.GetMouseButton(0) && grounded == false)
             {
-                boostAttack = false;
+                attacking = true;
+                anim.SetBool("attacking", attacking);
             }
         }
 
@@ -184,6 +187,9 @@ public class Movement : MonoBehaviour
         {
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             // Debug.Log("Jumping");
+            grounded = false;
+            attacking = false;
+            boostAttack = false;
             jumps += 1;
             StartCoroutine(Cooldown());
             if (jumps == maxJumps)
@@ -191,11 +197,19 @@ public class Movement : MonoBehaviour
                 StartCoroutine(Cooldown3());
             }
         }
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) // || is OR
+        {
+           // moving = true;
+            boostAttack = false;
+            attacking = false;
+        }
+            
 
         if (Input.GetMouseButton(0))
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) // || is OR
+            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) ) // || is OR
             {
                 {
+
                     if (plr.flipX == false && lungeCooldown <= 4.5 && grounded == true)
                     {
                         moving = true;
