@@ -2038,7 +2038,7 @@ Transform:
   m_GameObject: {fileID: 326451672}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 26.2, y: -3.35, z: 0}
+  m_LocalPosition: {x: 17.11, y: -3.35, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2102,8 +2102,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 362729909}
   moveSpeed: 4.25
+  grounded: 0
   enemy: {fileID: 326451675}
-  UpdatePosition: {x: 0, y: 0}
 --- !u!50 &326451681
 Rigidbody2D:
   serializedVersion: 4
@@ -5299,8 +5299,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 362729909}
   moveSpeed: 4.25
+  grounded: 0
   enemy: {fileID: 945233495}
-  UpdatePosition: {x: 0, y: 0}
 --- !u!114 &945233490
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7260,8 +7260,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 362729909}
   moveSpeed: 4.25
+  grounded: 0
   enemy: {fileID: 1471690005}
-  UpdatePosition: {x: 0, y: 0}
 --- !u!114 &1471690000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8856,8 +8856,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 362729909}
   moveSpeed: 4.25
+  grounded: 0
   enemy: {fileID: 1812773465}
-  UpdatePosition: {x: 0, y: 0}
 --- !u!114 &1812773460
 MonoBehaviour:
   m_ObjectHideFlags: 0

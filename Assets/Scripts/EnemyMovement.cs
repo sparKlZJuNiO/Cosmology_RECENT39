@@ -8,6 +8,7 @@ public class EnemyMovement : MonoBehaviour
     public Transform player;
     public float moveSpeed = 5f;
     private Rigidbody2D rb;
+    public bool grounded = false;
     [SerializeField] private SpriteRenderer enemy;
     private Vector2 UpdatePosition;
     private Vector2 movement;
@@ -39,8 +40,12 @@ public class EnemyMovement : MonoBehaviour
         {
             rb.velocity = Vector2.up * 16;
         }
+        if (collision.gameObject.tag == ("isOnGround"))
+        {
+            grounded = true;
+        }
     }
-            private void FixedUpdate()
+        private void FixedUpdate()
     {
         if (rb.GetComponent<Health>().death == false)
         {
@@ -50,7 +55,10 @@ public class EnemyMovement : MonoBehaviour
 
     void moveCharacter(Vector2 direction)
     {
-        rb.MovePosition((Vector2) transform.position + (direction * moveSpeed * Time.deltaTime));
-        transform.position = new Vector2(transform.position.x, transform.position.y); // This would stick the player down the y-axis
+        if (grounded == true)
+        {
+            rb.MovePosition((Vector2) transform.position + (direction * moveSpeed * Time.deltaTime));
+            transform.position = new Vector2(transform.position.x, transform.position.y); // This would stick the player down the y-axis
+        }
     }
 }
