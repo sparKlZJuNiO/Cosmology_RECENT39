@@ -21,7 +21,7 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         float distance = Vector2.Distance(transform.position, player.transform.position);
-        UpdatePosition = new Vector2(transform.position.x, transform.position.y); // Keeps the y-axis height
+       // UpdatePosition = new Vector2(transform.position.x, transform.position.y); // Keeps the y-axis height
         //Debug.Log(distance);
 
         if (distance < 16 && rb.GetComponent<Health>().death == false)
@@ -51,6 +51,6 @@ public class EnemyMovement : MonoBehaviour
     void moveCharacter(Vector2 direction)
     {
         rb.MovePosition((Vector2) transform.position + (direction * moveSpeed * Time.deltaTime));
-        transform.position = new Vector2(transform.position.x, UpdatePosition.y); // This would stick the player down the y-axis
+        transform.position = new Vector2(transform.position.x, transform.position.y); // This would stick the player down the y-axis
     }
 }

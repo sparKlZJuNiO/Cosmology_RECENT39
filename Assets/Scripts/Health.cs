@@ -41,10 +41,16 @@ public class Health : MonoBehaviour
             Touched = true; // How many times has the player collided with the enemy
         }
 
-         if (collision.gameObject.tag == ("bullet"))
-            {
-            Die();
-            }
+        if (collision.gameObject.tag == ("bullet"))
+        {
+            //Damage(10);
+            Debug.Log("Here");
+        }
+
+        if (collision.gameObject.tag == ("door"))
+        {
+            Destroy(gameObject);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -63,7 +69,7 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) & Touched == true && player.GetComponent<Movement>().grounded == true)
+        if (Input.GetMouseButtonDown(0) & Touched == true)
         {
             Damage(10);
         }
