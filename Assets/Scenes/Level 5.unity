@@ -839,7 +839,11 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0.70464027, w: 0.70956475}
   m_LocalPosition: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_LocalScale: {x: 0.7187671, y: 0.12697186, z: 0.6343456}
+=======
+  m_LocalScale: {x: 0.5526852, y: 0.0976331, z: 0.48777053}
+>>>>>>> Stashed changes
 =======
   m_LocalScale: {x: 0.5526852, y: 0.0976331, z: 0.48777053}
 >>>>>>> Stashed changes
@@ -850,7 +854,11 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -120.00008, y: -223.99998}
+=======
+  m_AnchoredPosition: {x: -82.99995, y: -89.000015}
+>>>>>>> Stashed changes
 =======
   m_AnchoredPosition: {x: -82.99995, y: -89.000015}
 >>>>>>> Stashed changes
@@ -1525,7 +1533,11 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1.4}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_LocalScale: {x: 2.714632, y: 0.7341366, z: 0.7341366}
+=======
+  m_LocalScale: {x: 1.6603564, y: 0.44902158, z: 0.44902158}
+>>>>>>> Stashed changes
 =======
   m_LocalScale: {x: 1.6603564, y: 0.44902158, z: 0.44902158}
 >>>>>>> Stashed changes
@@ -1544,7 +1556,11 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: 615, y: 240}
+=======
+  m_AnchoredPosition: {x: 293, y: 120}
+>>>>>>> Stashed changes
 =======
   m_AnchoredPosition: {x: 293, y: 120}
 >>>>>>> Stashed changes
@@ -4010,7 +4026,11 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0.70464027, w: 0.70956475}
   m_LocalPosition: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_LocalScale: {x: 0.7187671, y: 0.12697186, z: 0.6343456}
+=======
+  m_LocalScale: {x: 0.5526852, y: 0.0976331, z: 0.48777053}
+>>>>>>> Stashed changes
 =======
   m_LocalScale: {x: 0.5526852, y: 0.0976331, z: 0.48777053}
 >>>>>>> Stashed changes
@@ -4021,7 +4041,11 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -120, y: -224}
+=======
+  m_AnchoredPosition: {x: -82.99994, y: -89.00003}
+>>>>>>> Stashed changes
 =======
   m_AnchoredPosition: {x: -82.99994, y: -89.00003}
 >>>>>>> Stashed changes
@@ -5640,7 +5664,11 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_LocalScale: {x: 1.1103661, y: 1.1103661, z: 1.1103661}
+=======
+  m_LocalScale: {x: 0.6014235, y: 0.6014235, z: 0.6014235}
+>>>>>>> Stashed changes
 =======
   m_LocalScale: {x: 0.6014235, y: 0.6014235, z: 0.6014235}
 >>>>>>> Stashed changes
@@ -5651,7 +5679,11 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -39, y: 259}
+=======
+  m_AnchoredPosition: {x: -13, y: 130}
+>>>>>>> Stashed changes
 =======
   m_AnchoredPosition: {x: -13, y: 130}
 >>>>>>> Stashed changes
@@ -6413,7 +6445,11 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0.70464027, w: 0.70956475}
   m_LocalPosition: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_LocalScale: {x: 0.8338065, y: 0.15371068, z: 0.84297293}
+=======
+  m_LocalScale: {x: 0.641143, y: 0.11819352, z: 0.6481914}
+>>>>>>> Stashed changes
 =======
   m_LocalScale: {x: 0.641143, y: 0.11819352, z: 0.6481914}
 >>>>>>> Stashed changes
@@ -6424,7 +6460,11 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -120.00014, y: -223.99997}
+=======
+  m_AnchoredPosition: {x: -83, y: -89}
+>>>>>>> Stashed changes
 =======
   m_AnchoredPosition: {x: -83, y: -89}
 >>>>>>> Stashed changes
@@ -6944,7 +6984,11 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_LocalScale: {x: 0.36785224, y: 0.402138, z: 0.04416155}
+=======
+  m_LocalScale: {x: 0.19804686, y: 0.21650587, z: 0.023776006}
+>>>>>>> Stashed changes
 =======
   m_LocalScale: {x: 0.19804686, y: 0.21650587, z: 0.023776006}
 >>>>>>> Stashed changes
@@ -6956,7 +7000,11 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -631, y: 259}
+=======
+  m_AnchoredPosition: {x: -322, y: 129}
+>>>>>>> Stashed changes
 =======
   m_AnchoredPosition: {x: -322, y: 129}
 >>>>>>> Stashed changes

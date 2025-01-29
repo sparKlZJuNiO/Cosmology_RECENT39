@@ -198,7 +198,10 @@ CanvasRenderer:
   m_GameObject: {fileID: 34554123}
   m_CullTransparentMesh: 1
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
 =======
+=======
+>>>>>>> Stashed changes
 --- !u!1 &36134128
 GameObject:
   m_ObjectHideFlags: 0
@@ -1101,7 +1104,11 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -108, y: -225}
+=======
+  m_AnchoredPosition: {x: -76, y: -83}
+>>>>>>> Stashed changes
 =======
   m_AnchoredPosition: {x: -76, y: -83}
 >>>>>>> Stashed changes
@@ -1776,7 +1783,11 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1.4}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_LocalScale: {x: 2.6075652, y: 0.7051817, z: 0.7051817}
+=======
+  m_LocalScale: {x: 1.3444544, y: 0.36359, z: 0.36359}
+>>>>>>> Stashed changes
 =======
   m_LocalScale: {x: 1.3444544, y: 0.36359, z: 0.36359}
 >>>>>>> Stashed changes
@@ -1795,7 +1806,11 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: 631, y: 244}
+=======
+  m_AnchoredPosition: {x: 307, y: 123}
+>>>>>>> Stashed changes
 =======
   m_AnchoredPosition: {x: 307, y: 123}
 >>>>>>> Stashed changes
@@ -4549,7 +4564,11 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -108.00002, y: -225}
+=======
+  m_AnchoredPosition: {x: -76.00001, y: -82.999985}
+>>>>>>> Stashed changes
 =======
   m_AnchoredPosition: {x: -76.00001, y: -82.999985}
 >>>>>>> Stashed changes
@@ -5887,7 +5906,11 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_LocalScale: {x: 0.8736638, y: 0.8736638, z: 0.8736638}
+=======
+  m_LocalScale: {x: 0.52477366, y: 0.52477366, z: 0.52477366}
+>>>>>>> Stashed changes
 =======
   m_LocalScale: {x: 0.52477366, y: 0.52477366, z: 0.52477366}
 >>>>>>> Stashed changes
@@ -5898,7 +5921,11 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -21, y: 261}
+=======
+  m_AnchoredPosition: {x: 4.4, y: 132.6}
+>>>>>>> Stashed changes
 =======
   m_AnchoredPosition: {x: 4.4, y: 132.6}
 >>>>>>> Stashed changes
@@ -6666,7 +6693,11 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -108.000046, y: -224.99997}
+=======
+  m_AnchoredPosition: {x: -76.00003, y: -82.99997}
+>>>>>>> Stashed changes
 =======
   m_AnchoredPosition: {x: -76.00003, y: -82.99997}
 >>>>>>> Stashed changes
@@ -7186,7 +7217,11 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_LocalScale: {x: 0.33835256, y: 0.36988875, z: 0.040620044}
+=======
+  m_LocalScale: {x: 0.18768556, y: 0.20517883, z: 0.022532107}
+>>>>>>> Stashed changes
 =======
   m_LocalScale: {x: 0.18768556, y: 0.20517883, z: 0.022532107}
 >>>>>>> Stashed changes
@@ -7198,7 +7233,11 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
   m_AnchoredPosition: {x: -601, y: 244}
+=======
+  m_AnchoredPosition: {x: -335, y: 133}
+>>>>>>> Stashed changes
 =======
   m_AnchoredPosition: {x: -335, y: 133}
 >>>>>>> Stashed changes
