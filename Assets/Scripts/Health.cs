@@ -41,8 +41,7 @@ public class Health : MonoBehaviour
             Touched = true; // How many times has the player collided with the enemy
         }
 
-<<<<<<< Updated upstream
-<<<<<<< Updated upstream
+
         if (collision.gameObject.tag == ("bullet"))
         {
             //Damage(10);
@@ -53,10 +52,7 @@ public class Health : MonoBehaviour
         {
             Destroy(gameObject);
         }
-=======
->>>>>>> Stashed changes
-=======
->>>>>>> Stashed changes
+
          if (collision.gameObject.tag == ("bullet"))
             {
             Die();
