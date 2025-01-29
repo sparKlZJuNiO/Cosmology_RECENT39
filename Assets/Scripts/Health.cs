@@ -42,6 +42,7 @@ public class Health : MonoBehaviour
         }
 
 <<<<<<< Updated upstream
+<<<<<<< Updated upstream
         if (collision.gameObject.tag == ("bullet"))
         {
             //Damage(10);
@@ -52,6 +53,8 @@ public class Health : MonoBehaviour
         {
             Destroy(gameObject);
         }
+=======
+>>>>>>> Stashed changes
 =======
 >>>>>>> Stashed changes
          if (collision.gameObject.tag == ("bullet"))
