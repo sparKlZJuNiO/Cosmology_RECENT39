@@ -11,19 +11,27 @@ public class EnemyMovement : MonoBehaviour
     public bool grounded = false;
     [SerializeField] private SpriteRenderer enemy;
     private Vector2 UpdatePosition;
+    [SerializeField] private Transform[] waypoints;
+    public bool Ready = false;
+    public bool waypointing = true;
+    public int waypointIndex = 0;
+
+
     private Vector2 movement;
     void Start()
     {
         rb = this.GetComponent<Rigidbody2D>();
         enemy = GetComponent<SpriteRenderer>();
+        transform.position = waypoints[waypointIndex].transform.position;
     }
 
     // Update is called once per frame
     void Update()
     {
         float distance = Vector2.Distance(transform.position, player.transform.position);
-       // UpdatePosition = new Vector2(transform.position.x, transform.position.y); // Keeps the y-axis height
+        UpdatePosition = new Vector2(transform.position.x, transform.position.y); // Keeps the y-axis height
         //Debug.Log(distance);
+
 
         if (distance < 16 && rb.GetComponent<Health>().death == false)
         {
@@ -31,6 +39,34 @@ public class EnemyMovement : MonoBehaviour
             direction.Normalize();
             movement = direction;
             enemy.flipX = player.transform.position.x < this.transform.position.x; // Flips enemy
+            Ready = true;
+            waypointing = false;
+        }
+        else
+        {
+            Ready = false;
+            waypointing = true;
+        }
+
+       if (rb.GetComponent<Health>().death == false && Ready == false && waypointing == false)
+       {
+            moveCharacter(movement);
+      }
+        else
+        {
+            Ready = false;
+            waypointing = true;
+       }
+
+        // Move Enemy
+        Move();
+    }
+
+    private void Move()
+    {
+        if (waypointIndex <= waypoints.Length - 1 && waypointing == true)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, moveSpeed * Time.deltaTime);
         }
     }
 
@@ -40,25 +76,32 @@ public class EnemyMovement : MonoBehaviour
         {
             rb.velocity = Vector2.up * 16;
         }
-        if (collision.gameObject.tag == ("isOnGround"))
+
+        if (collision.gameObject.tag == ("waypoint") && waypointing == true)
         {
-            grounded = true;
+            waypointIndex += 1;
+            enemy.flipX = false;
+            if (collision.gameObject.tag == ("waypoint") && waypointing == false)
+            {
+
+            }
+
         }
-    }
-        private void FixedUpdate()
-    {
-        if (rb.GetComponent<Health>().death == false)
+        if (collision.gameObject.tag == ("waypoint2") && waypointing == true)
         {
-            moveCharacter(movement);
+            enemy.flipX = true;
+            waypointIndex -= 1;
         }
     }
 
+
     void moveCharacter(Vector2 direction)
     {
-        if (grounded == true)
+        if (Ready == true && waypointing == false)
         {
             rb.MovePosition((Vector2) transform.position + (direction * moveSpeed * Time.deltaTime));
-            transform.position = new Vector2(transform.position.x, transform.position.y); // This would stick the player down the y-axis
+            transform.position = new Vector2(transform.position.x, UpdatePosition.y); // This would stick the player down the y-axis
+            waypointIndex = 0;
         }
     }
 }
