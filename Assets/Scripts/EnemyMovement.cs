@@ -48,7 +48,7 @@ public class EnemyMovement : MonoBehaviour
             waypointing = true;
         }
 
-       if (rb.GetComponent<Health>().death == false && Ready == false && waypointing == false)
+       if (rb.GetComponent<Health>().death == false && Ready == true && waypointing == false)
        {
             moveCharacter(movement);
       }
@@ -64,12 +64,19 @@ public class EnemyMovement : MonoBehaviour
 
     private void Move()
     {
-        if (waypointIndex <= waypoints.Length - 1 && waypointing == true)
+        if (waypointIndex <= waypoints.Length - 1 && waypointing == true && Ready == false)
         {
             transform.position = Vector2.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, moveSpeed * Time.deltaTime);
         }
     }
 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == ("grounded"))
+        {
+            grounded = false;
+        }
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == ("enemy"))
@@ -77,20 +84,22 @@ public class EnemyMovement : MonoBehaviour
             rb.velocity = Vector2.up * 16;
         }
 
+        if (collision.gameObject.tag == ("grounded"))
+        {
+            grounded = true;
+        }
+
         if (collision.gameObject.tag == ("waypoint") && waypointing == true)
         {
-            waypointIndex += 1;
-            enemy.flipX = false;
-            if (collision.gameObject.tag == ("waypoint") && waypointing == false)
-            {
-
-            }
-
+                waypointIndex += 1;
+                enemy.flipX = false;
+            collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         }
         if (collision.gameObject.tag == ("waypoint2") && waypointing == true)
         {
             enemy.flipX = true;
             waypointIndex -= 1;
+            collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         }
     }
 
@@ -100,8 +109,9 @@ public class EnemyMovement : MonoBehaviour
         if (Ready == true && waypointing == false)
         {
             rb.MovePosition((Vector2) transform.position + (direction * moveSpeed * Time.deltaTime));
-            transform.position = new Vector2(transform.position.x, UpdatePosition.y); // This would stick the player down the y-axis
+            transform.position = new Vector2(transform.position.x, transform.position.y); // This would stick the player down the y-axis
             waypointIndex = 0;
+            moveSpeed = 5f;
         }
     }
 }

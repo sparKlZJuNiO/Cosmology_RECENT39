@@ -9,6 +9,8 @@ TagManager:
   - laser
   - door
   - bullet
+  - waypoint
+  - waypoint2
   layers:
   - Default
   - TransparentFX

@@ -31,7 +31,7 @@ public class EnemyShooting : MonoBehaviour
 
         anim.SetBool("shooting", shooting);
 
-        if (distance < 15 && rb.GetComponent<Health>().death == false)
+        if (distance < 16 && rb.GetComponent<Health>().death == false && rb.GetComponent<EnemyMovement>().waypointing == false && rb.GetComponent<EnemyMovement>().Ready == true)
         {
             timer += Time.deltaTime;
 
