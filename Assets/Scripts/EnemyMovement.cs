@@ -35,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.transform.position);
                                                                      
   
-        if (distance < 25 && rb.GetComponent<Health>().death == false)
+        if (distance < 10 && rb.GetComponent<Health>().death == false)
         {
             Vector3 direction = player.transform.position - transform.position;
             direction.Normalize();
@@ -48,7 +48,7 @@ public class EnemyMovement : MonoBehaviour
             shooting = true;
             rb.GetComponent<EnemyShooting>().shooting = true;
         }
-        else if (distance > 25 && rb.GetComponent<Health>().death == false)
+        else if (distance > 10 && rb.GetComponent<Health>().death == false)
         {
             Ready = false;
             shooting = false;
@@ -124,11 +124,9 @@ public class EnemyMovement : MonoBehaviour
     {
         if (Ready == true && waypointing == false)
         {
-            rb.MovePosition((Vector2) transform.position + (direction * moveSpeed * Time.deltaTime));
             waypointIndex = 1;
             waypoints[0].GetComponent<BoxCollider2D>().isTrigger = true;
             waypoints[1].GetComponent<BoxCollider2D>().isTrigger = true;
-            moveSpeed = 55f;
         }
     }
 }

@@ -37,7 +37,7 @@ public class EnemyBulletScript : MonoBehaviour
 
         enemy = GameObject.FindGameObjectWithTag("enemy");
 
-        if (timer > 10)
+        if (timer > 5)
         {
             Destroy(gameObject);
         }

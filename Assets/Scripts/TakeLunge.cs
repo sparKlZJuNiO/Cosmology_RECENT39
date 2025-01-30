@@ -27,7 +27,7 @@ public class LungeManager : MonoBehaviour
     {
         if (Input.GetMouseButton(0) || Input.GetMouseButtonUp(0) && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)))
         {
-            if (player.GetComponent<Movement>().grounded == true && player.GetComponent<Movement>().lungeCooldown >= 3)
+            if (player.GetComponent<Movement>().grounded == true && player.GetComponent<Movement>().isCooldown4 == false)
             {
                 TakeLunge(3);
             }

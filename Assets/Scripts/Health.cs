@@ -75,7 +75,7 @@ public class Health : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetMouseButtonDown(0) & Touched == true)
+        if (Input.GetMouseButtonDown(0) & Touched == true && player.GetComponent<Movement>().isCooldown4 == false)
         {
             Damage(10);
         }
@@ -120,16 +120,20 @@ public class Health : MonoBehaviour
 
     public void Die()
     {
-        //Debug.Log("I am dead");
-        death = true;
-        anim.SetBool("death", death);
-        rb.tag = "Untagged";
-        rb.GetComponent<BoxCollider2D>().offset = new Vector2(-0.1860085f, -0.6659491f);
-        rb.GetComponent<BoxCollider2D>().size = new Vector2(2.807747f, 0.5523562f);
-        rb.GetComponent<BoxCollider2D>().isTrigger = true;
-        rb.GetComponent<Rigidbody2D>().isKinematic = true;
-        rb.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
-        rb.mass = 83.15f;
-        rb.gravityScale = 0;
+        if (death == false) 
+        {
+            //Debug.Log("I am dead");
+            death = true;
+            anim.SetBool("death", death);
+            rb.tag = "Untagged";
+            rb.GetComponent<BoxCollider2D>().offset = new Vector2(-0.1860085f, -0.7303029f);
+            rb.GetComponent<BoxCollider2D>().size = new Vector2(2.807747f, 0.9384806f);
+            rb.GetComponent<BoxCollider2D>().isTrigger = true;
+            rb.GetComponent<Rigidbody2D>().isKinematic = true;
+            rb.GetComponent<Rigidbody2D>().constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY | RigidbodyConstraints2D.FreezeRotation;
+            rb.mass = 83.15f;
+            rb.gravityScale = 0;
+            rb.transform.position = new Vector3(rb.transform.position.x, rb.transform.position.y - 0.5f);
+        }
     }
 }
