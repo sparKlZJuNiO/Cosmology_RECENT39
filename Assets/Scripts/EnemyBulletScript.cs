@@ -9,7 +9,9 @@ public class EnemyBulletScript : MonoBehaviour
     public SpriteRenderer player2;
     private Rigidbody2D rb;
     public GameObject enemy;
+    public bool death = false;
     public float force;
+    Animator anim;
     private float timer;
 
     // Start is called before the first frame update
@@ -19,6 +21,7 @@ public class EnemyBulletScript : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         player2 = GetComponent<SpriteRenderer>();
         enemy = GameObject.FindGameObjectWithTag("enemy");
+        death = enemy.GetComponent<Health>().death;
 
         if (player != null)
         {
@@ -47,14 +50,15 @@ public class EnemyBulletScript : MonoBehaviour
     {
         if (collision.gameObject.tag == ("enemy"))
         {
+            death = true;
+            anim.SetBool("death", death);
             Destroy(gameObject);
-            enemy.GetComponent<Health>().death = true;
         }
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag("Player") && enemy.GetComponent<Health>().death == false)
+        if (other.gameObject.CompareTag("Player") && death == false)
         {
             if (Input.GetMouseButton(0) == false)
             {
@@ -64,7 +68,7 @@ public class EnemyBulletScript : MonoBehaviour
             }
         }
 
-        if (other.gameObject.CompareTag("Player") && (Input.GetMouseButton(0)) && enemy.GetComponent<Health>().death == false)
+        if (other.gameObject.CompareTag("Player") && (Input.GetMouseButton(0)) && death == false)
         {
             Vector3 direction = player.transform.position - transform.position;
             rb.velocity = new Vector2(-direction.x, -direction.y).normalized * force; // Controls the speed of the bullet

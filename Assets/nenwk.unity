@@ -6841,6 +6841,7 @@ MonoBehaviour:
   - {fileID: 1215926750}
   - {fileID: 609670484}
   Ready: 0
+  BulletPos: {fileID: 0}
   waypointing: 1
   waypointIndex: 0
 --- !u!114 &1471690000

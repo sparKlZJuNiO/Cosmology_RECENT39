@@ -85,9 +85,22 @@ public class Movement : MonoBehaviour
             UpdatePosition = new Vector2(transform.position.x, transform.position.y); // Keeps the y-axis height
            // Debug.Log("Works!");
         }
-    }
 
-    private void OnCollisionExit2D(Collision2D collision)
+        {
+        if (collision.gameObject.tag == ("waypoint"))
+            {
+                collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            }
+         if (collision.gameObject.tag == ("waypoint2"))
+            {
+                collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+            }
+        }
+
+
+}
+
+private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == ("isOnGround"))
         {
@@ -95,6 +108,15 @@ public class Movement : MonoBehaviour
             boostAttack = false;
             anim.SetBool("boostattacking", boostAttack);
             //Debug.Log("not!");
+        }
+
+        if (collision.gameObject.tag == ("waypoint"))
+        {
+            collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
+        }
+        if (collision.gameObject.tag == ("waypoint2"))
+        {
+            collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
         }
     }
     void Update()
