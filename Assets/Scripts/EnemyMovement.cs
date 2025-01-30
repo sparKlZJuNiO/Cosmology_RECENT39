@@ -13,7 +13,7 @@ public class EnemyMovement : MonoBehaviour
     public bool shooting = false;
     [SerializeField] private SpriteRenderer enemy;
     private Vector2 UpdatePosition;
-    [SerializeField] private GameObject[] waypoints;
+    [SerializeField] public GameObject[] waypoints;
     public bool Ready = false;
     public bool waypointing = true;
     Animator anim;
@@ -35,7 +35,7 @@ public class EnemyMovement : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.transform.position);
                                                                      
   
-        if (distance < 16 && rb.GetComponent<Health>().death == false)
+        if (distance < 25 && rb.GetComponent<Health>().death == false)
         {
             Vector3 direction = player.transform.position - transform.position;
             direction.Normalize();
@@ -43,21 +43,19 @@ public class EnemyMovement : MonoBehaviour
             enemy.flipX = player.transform.position.x < this.transform.position.x; // Flips enemy
             Ready = true;
             waypointing = false;
-            Debug.Log("Close");
+           // Debug.Log("Close");
             walking = false;
+            shooting = true;
             rb.GetComponent<EnemyShooting>().shooting = true;
-            anim.SetBool("shooting", shooting);
-            anim.SetBool("walking", walking);
         }
-        else
+        else if (distance > 25 && rb.GetComponent<Health>().death == false)
         {
             Ready = false;
+            shooting = false;
             waypointing = true;
             walking = true;
             rb.GetComponent<EnemyShooting>().shooting = false;
-            anim.SetBool("shooting", shooting);
-            anim.SetBool("walking", walking);
-            Debug.Log("Distance");
+           // Debug.Log("Distance");
             waypoints[0].GetComponent<BoxCollider2D>().isTrigger = false;
             waypoints[1].GetComponent<BoxCollider2D>().isTrigger = false;
         }
@@ -78,7 +76,7 @@ public class EnemyMovement : MonoBehaviour
 
     private void Move()
     {
-        if (waypointIndex <= waypoints.Length - 1 && waypointing == true && Ready == false)
+        if (waypointIndex <= waypoints.Length - 1 && waypointing == true && Ready == false && rb.GetComponent<Health>().death == false)
         {
             transform.position = Vector3.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, moveSpeed * Time.deltaTime);
             waypoints[0].GetComponent<BoxCollider2D>().isTrigger = false;

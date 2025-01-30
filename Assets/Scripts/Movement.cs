@@ -15,10 +15,11 @@ public class Movement : MonoBehaviour
     [SerializeField] private Light outdoorLight;
     [SerializeField] private float jumpCooldown = 1.08f;
     [SerializeField] private float jumpCooldown2 = 1.85f;
-    [SerializeField] public float lungeCooldown = 4.5f;
+    [SerializeField] public float lungeCooldown = 0.10f;
     [SerializeField] public float sprintingTime = 3.5f;
     public bool grounded = false;
     private bool isCooldown = false;
+    private bool isCooldown4 = false;
     private bool moving = false;
     private bool boostAttack = false;
     private bool attacking = false;
@@ -66,6 +67,13 @@ public class Movement : MonoBehaviour
         isCooldown2 = true;
         yield return new WaitForSeconds(3);
         isCooldown2 = false;
+    }
+
+    private IEnumerator Cooldown4()
+    {
+        isCooldown4 = true;
+        yield return new WaitForSeconds(0.1f);
+        isCooldown4 = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -137,12 +145,12 @@ public class Movement : MonoBehaviour
             anim.SetBool("running", running);
         }
 
-        else if (lungeCooldown < 3)
+        else if (lungeCooldown < 1.5)
         {
             lungeCooldown -= Time.deltaTime;
-            if (lungeCooldown < 1)
+            if (lungeCooldown < 1.2)
             {
-                lungeCooldown = 4.5f;
+                lungeCooldown = 2f;
                 //Debug.Log("Finished waiting");
             }
         }
@@ -210,12 +218,12 @@ public class Movement : MonoBehaviour
             {
                 {
 
-                    if (plr.flipX == false && lungeCooldown <= 4.5 && grounded == true)
+                    if (plr.flipX == false && lungeCooldown <= 2 && grounded == true)
                     {
                         moving = true;
                         boostAttack = false;
 
-                        if (lungeCooldown >= 3)
+                        if (lungeCooldown >= 1)
                         {
                             transform.position = Vector2.MoveTowards(transform.position, target + transform.position, speedBoost * -Time.deltaTime); // Made by Jr (this was complicated, but done it myself to fix things)
                             transform.position = new Vector2(transform.position.x, UpdatePosition.y); // This would stick the player down the y-axis
@@ -227,14 +235,14 @@ public class Movement : MonoBehaviour
                         else if (lungeCooldown < 1)
                         {
                             lungeCooldown -= Time.deltaTime;
-                            lungeCooldown = 4.5f;
+                            lungeCooldown = 2f;
                             Debug.Log("Finished waiting");
                         }
                     }
-                    else if (plr.flipX == true && lungeCooldown <= 4.5 && grounded == true)
+                    else if (plr.flipX == true && lungeCooldown <= 2 && grounded == true)
                     {
                         moving = true;
-                        if (lungeCooldown >= 3)
+                        if (lungeCooldown >= 1)
                         {
                             transform.position = Vector2.MoveTowards(transform.position, target + transform.position, speedBoost * Time.deltaTime); // Made by Jr (this was complicated, but done it myself to fix things)
                             transform.position = new Vector2(transform.position.x, UpdatePosition.y); // This would stick the player down 
@@ -246,7 +254,7 @@ public class Movement : MonoBehaviour
                         else if (lungeCooldown < 1)
                         {
                             lungeCooldown -= Time.deltaTime;
-                            lungeCooldown = 4.5f;
+                            lungeCooldown = 2f;
                             Debug.Log("Finished waiting");
                         }
                     }

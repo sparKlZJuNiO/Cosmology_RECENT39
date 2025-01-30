@@ -43,7 +43,16 @@ public class EnemyBulletScript : MonoBehaviour
         }
     }
 
-        private void OnTriggerEnter2D(Collider2D other)
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == ("enemy"))
+        {
+            Destroy(gameObject);
+            enemy.GetComponent<Health>().death = true;
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player") && enemy.GetComponent<Health>().death == false)
         {
@@ -62,6 +71,7 @@ public class EnemyBulletScript : MonoBehaviour
 
             float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg; // Looks for a float y and x
             transform.rotation = Quaternion.Euler(0, 0, rot);
+            rb.GetComponent<BoxCollider2D>().isTrigger = false;
            // Debug.Log("Deflect");
         }
     }
