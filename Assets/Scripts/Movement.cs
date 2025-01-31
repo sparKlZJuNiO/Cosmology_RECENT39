@@ -274,7 +274,7 @@ private void OnCollisionExit2D(Collision2D collision)
                             transform.position = new Vector2(transform.position.x, UpdatePosition.y); // This would stick the player down the y-axis
                             attacking = true;
                             anim.SetBool("attacking", attacking);
-                        source.volume = 0.15f;
+                       // source.volume = 0.15f;
                         source.panStereo = 0.664f;
                         Hammer_2D.GetComponent<Light2D>().enabled = false;
                         source.PlayOneShot(clip2);
@@ -289,7 +289,7 @@ private void OnCollisionExit2D(Collision2D collision)
                             // Debug.Log(Time.deltaTime);
                             attacking = true;
                             anim.SetBool("attacking", attacking);
-                        source.volume = 0.13f;
+                       // source.volume = 0.13f;
                         Hammer_2D.GetComponent<Light2D>().enabled = false;
                         source.panStereo = -0.664f;
                         source.PlayOneShot(clip3);

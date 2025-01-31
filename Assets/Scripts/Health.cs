@@ -42,6 +42,7 @@ public class Health : MonoBehaviour
         if (collision.gameObject.tag == ("Player"))
         {
             Touched = true; // How many times has the player collided with the enemy
+            rb.velocity = Vector2.up * 6;
         }
 
         if (collision.gameObject.tag == ("door"))

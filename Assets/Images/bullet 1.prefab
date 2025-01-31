@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: 0, z: -0.99991894, w: -0.012731771}
   m_LocalPosition: {x: 38.675, y: 18.735, z: 0}
-  m_LocalScale: {x: 5.5962, y: 2.3084326, z: 5.5962}
+  m_LocalScale: {x: 4.2550707, y: 1.6070025, z: 5.5962}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -132,8 +132,6 @@ MonoBehaviour:
   enemy: {fileID: 0}
   death: 0
   force: 27.3
-  source: {fileID: 0}
-  clip: {fileID: 8300000, guid: 7412615c33101294eb91b61b950fb08d, type: 3}
 --- !u!61 &8555400550110128972
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -166,7 +164,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.00009008497, y: 0.00012011081}
+  m_Offset: {x: -0.0004901737, y: -0.0013379604}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -177,7 +175,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16482009, y: 0.13656788}
+  m_Size: {x: 0.14162898, y: 0.10433349}
   m_EdgeRadius: 0
 --- !u!96 &3631433876372946234
 TrailRenderer:

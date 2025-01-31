@@ -11,7 +11,7 @@ public class CameraFollow : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 newPos = new Vector3(target.position.x, target.position.y + yOffset, -10f); // Player's Position in X and Y, -10 is the normal position for z-axis 
+        Vector3 newPos = new Vector3(target.position.x, target.position.y + 1.3f, -10f); // Player's Position in X and Y, -10 is the normal position for z-axis 
         transform.position = Vector3.Slerp(transform.position,newPos, followSpeed * Time.deltaTime); // Slerp inserts between two vectors
     }
 }

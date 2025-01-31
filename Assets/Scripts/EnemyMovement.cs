@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 using static UnityEngine.GraphicsBuffer;
 
 public class EnemyMovement : MonoBehaviour
@@ -13,6 +14,7 @@ public class EnemyMovement : MonoBehaviour
     public bool shooting = false;
     public AudioSource audioo;
     public AudioClip audio2o;
+    public AudioClip clip7;
     [SerializeField] private SpriteRenderer enemy;
     private Vector2 UpdatePosition;
     [SerializeField] public GameObject[] waypoints;
@@ -48,6 +50,8 @@ public class EnemyMovement : MonoBehaviour
             // Debug.Log("Close");
             walk = false;
             shooting = true;
+            //audioo.PlayOneShot(clip7);
+           // audioo.volume = 0.105f;
             rb.GetComponent<EnemyShooting>().shooting = true;
         }
         else if (distance > 20 && rb.GetComponent<Health>().death == false)
