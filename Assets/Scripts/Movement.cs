@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.Mathematics;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.U2D;
@@ -100,6 +99,7 @@ public class Movement : MonoBehaviour
         if (collision.gameObject.tag == ("laser"))
         {
             source.PlayOneShot(clip6);
+            source.volume = 0.400f;
         }
 
         if (collision.gameObject.tag == ("waypoint"))
@@ -170,6 +170,7 @@ private void OnCollisionExit2D(Collision2D collision)
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
             {
             source.PlayOneShot(clip);
+            source.volume = 0.100f;
             Hammer_2D.GetComponent<Light2D>().enabled = false;
         }
                
