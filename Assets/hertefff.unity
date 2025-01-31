@@ -2163,16 +2163,16 @@ MonoBehaviour:
   sprintingTime: 3.5
   grounded: 0
   isCooldown4: 0
-  Hammer_2D: {fileID: 578521249}
+  Hammer_2D: {fileID: 0}
   jumps: 0
   maxJumps: 2
-  source: {fileID: 706422158}
-  clip: {fileID: 8300000, guid: e9f703b97cbc35146a490a8713f2684e, type: 3}
-  clip2: {fileID: 8300000, guid: 9a17133ec5381c44e8ff9087465c1826, type: 3}
-  clip3: {fileID: 8300000, guid: 996a5ee564e262244b2db2d083aed9ab, type: 3}
-  clip4: {fileID: 8300000, guid: cf50905a885c59d4ebaf3bf1b3c53258, type: 3}
-  clip5: {fileID: 8300000, guid: 7367d5c7855090247a63b4d1583756ba, type: 3}
-  clip6: {fileID: 8300000, guid: c087b918c1598f24c948bd5d09a7876c, type: 3}
+  source: {fileID: 0}
+  clip: {fileID: 0}
+  clip2: {fileID: 0}
+  clip3: {fileID: 0}
+  clip4: {fileID: 0}
+  clip5: {fileID: 0}
+  clip6: {fileID: 0}
   plrObject: {fileID: 362729909}
   plr: {fileID: 362729908}
   newColor1: {r: 1, g: 0.54082924, b: 0, a: 1}
@@ -2298,7 +2298,7 @@ MonoBehaviour:
   maxHealth: 100
   currentHealth: 100
   gameOverUI: {fileID: 325736876}
-  fade: {fileID: 498745759}
+  fade: {fileID: 0}
   playerIsDead: 0
   fullHeart: {fileID: 21300000, guid: 56dfe2d5e54038848ab369e4554d8b8c, type: 3}
   emptyHeart: {fileID: 21300000, guid: 7b166534fae778c46b9b34225a504394, type: 3}
@@ -2320,8 +2320,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SceneNumber: 1
-  transitionAnim: {fileID: 319380424}
-  timer: 1.5
+  transitionAnim: {fileID: 0}
+  timer: 1
   checker: 0
 --- !u!1 &407421895
 GameObject:
@@ -7050,8 +7050,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   death: 0
-  source: {fileID: 706422158}
-  clip: {fileID: 8300000, guid: 8ee0231bf134f6b49b91981f31f979a5, type: 3}
+  source: {fileID: 0}
+  clip: {fileID: 0}
   Touched: 0
 --- !u!61 &1394521494
 BoxCollider2D:
@@ -7715,8 +7715,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   death: 0
-  source: {fileID: 706422158}
-  clip: {fileID: 8300000, guid: 8ee0231bf134f6b49b91981f31f979a5, type: 3}
+  source: {fileID: 0}
+  clip: {fileID: 0}
   Touched: 0
 --- !u!61 &1459328013
 BoxCollider2D:
@@ -8048,8 +8048,8 @@ MonoBehaviour:
   grounded: 0
   walk: 0
   shooting: 0
-  audioo: {fileID: 706422158}
-  audio2o: {fileID: 8300000, guid: 7412615c33101294eb91b61b950fb08d, type: 3}
+  audioo: {fileID: 0}
+  audio2o: {fileID: 0}
   enemy: {fileID: 1471690005}
   waypoints:
   - {fileID: 1215926750}
@@ -8100,8 +8100,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   death: 0
-  source: {fileID: 706422158}
-  clip: {fileID: 8300000, guid: 8ee0231bf134f6b49b91981f31f979a5, type: 3}
+  source: {fileID: 0}
+  clip: {fileID: 0}
   Touched: 0
 --- !u!61 &1471690003
 BoxCollider2D:
@@ -10496,8 +10496,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 1
   death: 0
-  source: {fileID: 706422158}
-  clip: {fileID: 8300000, guid: 8ee0231bf134f6b49b91981f31f979a5, type: 3}
+  source: {fileID: 0}
+  clip: {fileID: 0}
   Touched: 0
 --- !u!61 &1913063242
 BoxCollider2D:
