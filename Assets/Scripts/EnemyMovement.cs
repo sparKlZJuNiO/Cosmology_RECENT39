@@ -11,11 +11,12 @@ public class EnemyMovement : MonoBehaviour
     public bool grounded = false;
     public bool walk = false;
     public bool shooting = false;
+    public AudioSource audioo;
+    public AudioClip audio2o;
     [SerializeField] private SpriteRenderer enemy;
     private Vector2 UpdatePosition;
     [SerializeField] public GameObject[] waypoints;
     public bool Ready = false;
-    public GameObject BulletPos;
     public bool waypointing = true;
     Animator anim;
     public int waypointIndex = 0;
@@ -36,7 +37,7 @@ public class EnemyMovement : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.transform.position);
                                                                      
   
-        if (distance < 15 && rb.GetComponent<Health>().death == false)
+        if (distance < 20 && rb.GetComponent<Health>().death == false)
         {
             Vector3 direction = player.transform.position - transform.position;
             direction.Normalize();
@@ -49,7 +50,7 @@ public class EnemyMovement : MonoBehaviour
             shooting = true;
             rb.GetComponent<EnemyShooting>().shooting = true;
         }
-        else if (distance > 15 && rb.GetComponent<Health>().death == false)
+        else if (distance > 20 && rb.GetComponent<Health>().death == false)
         {
             Ready = false;
             shooting = false;
@@ -117,6 +118,10 @@ public class EnemyMovement : MonoBehaviour
         {
             enemy.flipX = true;
             waypointIndex = 0;
+        }
+        if (collision.gameObject.tag == ("stairs"))
+        {
+            rb.velocity = Vector2.up * 12;
         }
     }
 

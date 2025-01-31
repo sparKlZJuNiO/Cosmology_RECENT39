@@ -11,11 +11,12 @@ public class PlayerHealth : MonoBehaviour
     public int currentHealth;
     private GameObject player;
     public GameObject gameOverUI;
+    public GameObject fade;
 
     [HideInInspector] public bool playerIsDead;
 
     [SerializeField] private Sprite fullHeart;
-    [SerializeField] private Sprite emptyHeart;
+    [SerializeField] private Sprite emptyHeart; 
     [SerializeField] private Image[] heartContainers;
 
     private void Start()
@@ -65,6 +66,8 @@ public class PlayerHealth : MonoBehaviour
         playerIsDead = true;
         gameOverUI.SetActive(true);
         gameObject.SetActive(false);
+        fade.SetActive(false);
+
     }
 
     public void Restart()

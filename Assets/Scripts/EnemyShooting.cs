@@ -9,7 +9,8 @@ public class EnemyShooting : MonoBehaviour
     public GameObject bullet;
     public Transform bulletPos;
     private Rigidbody2D rb;
-    public bool shooting = false;
+    public bool shooting;
+    public bool shooting2;
     Animator anim;
 
     [SerializeField] private float timer;
@@ -20,6 +21,7 @@ public class EnemyShooting : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody2D>();
+        shooting2 = rb.GetComponent<EnemyMovement>().shooting;
     }
 
     // Update is called once per frame
@@ -29,9 +31,9 @@ public class EnemyShooting : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.transform.position);
         //Debug.Log(distance);
 
-        anim.SetBool("shooting", shooting);
+       
 
-        if (distance < 16 && rb.GetComponent<Health>().death == false && rb.GetComponent<EnemyMovement>().waypointing == false && rb.GetComponent<EnemyMovement>().Ready == true)
+        if (distance < 20 && rb.GetComponent<Health>().death == false && shooting2 == false)
         {
             timer += Time.deltaTime;
 
@@ -41,9 +43,10 @@ public class EnemyShooting : MonoBehaviour
                 shoot();
             }
         }
-        else
+        else if (rb.GetComponent<Health>().death == true)
         {
             shooting = false;
+            anim.SetBool("shooting", shooting2);
         }
     }
 
@@ -51,5 +54,6 @@ public class EnemyShooting : MonoBehaviour
     {
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
         shooting = true;
+        anim.SetBool("shooting", shooting2);
     }
 }
