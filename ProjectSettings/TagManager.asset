@@ -11,6 +11,8 @@ TagManager:
   - bullet
   - waypoint
   - waypoint2
+  - stairs
+  - audio source
   layers:
   - Default
   - TransparentFX

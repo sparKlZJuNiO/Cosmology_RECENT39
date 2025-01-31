@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
+using static Unity.VisualScripting.Member;
 
 public class EnemyBulletScript : MonoBehaviour
 {
@@ -33,6 +35,9 @@ public class EnemyBulletScript : MonoBehaviour
         }
     }
 
+
+
+
     // Update is called once per frame
     void Update()
     {
@@ -40,23 +45,28 @@ public class EnemyBulletScript : MonoBehaviour
 
         enemy = GameObject.FindGameObjectWithTag("enemy");
 
-        if (timer > 5)
+        if (death == true)
+        {
+            Destroy(gameObject);
+        }
+
+        if (timer > 10)
         {
             Destroy(gameObject);
         }
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+   private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == ("enemy"))
         {
             death = true;
-            anim.SetBool("death", death);
-            Destroy(gameObject);
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+
+
+            private void OnTriggerEnter2D(Collider2D other)
     {
         if (other.gameObject.CompareTag("Player") && death == false)
         {
@@ -66,17 +76,17 @@ public class EnemyBulletScript : MonoBehaviour
                 player2.enabled = false;
                 Destroy(gameObject);
             }
+
         }
 
         if (other.gameObject.CompareTag("Player") && (Input.GetMouseButton(0)) && death == false)
         {
             Vector3 direction = player.transform.position - transform.position;
             rb.velocity = new Vector2(-direction.x, -direction.y).normalized * force; // Controls the speed of the bullet
-
             float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg; // Looks for a float y and x
             transform.rotation = Quaternion.Euler(0, 0, rot);
             rb.GetComponent<BoxCollider2D>().isTrigger = false;
-           // Debug.Log("Deflect");
+            // Debug.Log("Deflect");
         }
     }
 }

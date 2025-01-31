@@ -5,8 +5,10 @@ using System.Runtime.CompilerServices;
 using Unity.Mathematics;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 using UnityEngine.U2D;
 using UnityEngine.UIElements;
+using static Unity.VisualScripting.Member;
 
 public class Movement : MonoBehaviour
 {
@@ -21,12 +23,20 @@ public class Movement : MonoBehaviour
     public bool isCooldown4 = false;
     private bool moving = false;
     private bool boostAttack = false;
+    public GameObject Hammer_2D;
     private bool attacking = false;
     [SerializeField] private int jumps = 0;
    [SerializeField] private int maxJumps = 2;
     private bool isCooldown2 = false;
     private bool running = false;
     private bool isCooldown3 = false;
+    public AudioSource source;
+    public AudioClip clip;
+    public AudioClip clip2;
+    public AudioClip clip3;
+    public AudioClip clip4;
+    public AudioClip clip5;
+    public AudioClip clip6;
     private bool sprinting = false;
     private Vector2 UpdatePosition;
     [SerializeField] Transform plrObject;
@@ -79,14 +89,19 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == ("isOnGround"))
+        if (collision.gameObject.tag == ("isOnGround") || (collision.gameObject.tag == ("stairs")))
         {
             grounded = true;
             UpdatePosition = new Vector2(transform.position.x, transform.position.y); // Keeps the y-axis height
-           // Debug.Log("Works!");
+            source.PlayOneShot(clip4);
+            // Debug.Log("Works!");
         }
 
+        if (collision.gameObject.tag == ("laser"))
         {
+            source.PlayOneShot(clip6);
+        }
+
         if (collision.gameObject.tag == ("waypoint"))
             {
                 collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
@@ -95,14 +110,12 @@ public class Movement : MonoBehaviour
             {
                 collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
             }
-        }
-
 
 }
 
 private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == ("isOnGround"))
+        if (collision.gameObject.tag == ("isOnGround") || (collision.gameObject.tag == ("stairs")))
         {
             grounded = false;
             boostAttack = false;
@@ -125,6 +138,7 @@ private void OnCollisionExit2D(Collision2D collision)
 
         speed = 5;
 
+
         running = false;
         sprinting = false;
 
@@ -133,21 +147,32 @@ private void OnCollisionExit2D(Collision2D collision)
         anim.SetBool("sprinting", sprinting);
         anim.SetBool("boostattacking", boostAttack);
 
-        if (running == false && sprinting == false)
+        if (running == false && sprinting == false && attacking == false)
         {
             moving = false;
             attacking = false;
             anim.SetBool("attacking", attacking);
-            if (Input.GetMouseButton(0) && grounded == true)
+            if (Input.GetMouseButton(0) && grounded == true && running == false && sprinting == false)
             {
                 boostAttack = true;
+                Hammer_2D.GetComponent<Light2D>().enabled = true;
+
             }
-            else if (Input.GetMouseButton(0) && grounded == false)
+            else if (Input.GetMouseButton(0) && grounded == false )
             {
                 attacking = true;
+                boostAttack = false;
                 anim.SetBool("attacking", attacking);
+                Hammer_2D.GetComponent<Light2D>().enabled = false;
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
+            {
+            source.PlayOneShot(clip);
+            Hammer_2D.GetComponent<Light2D>().enabled = false;
+        }
+               
 
         // Flipping player left and right
         if (horizontalInput > 0.01f)
@@ -156,8 +181,9 @@ private void OnCollisionExit2D(Collision2D collision)
             speed = 18;
             running = true;
             sprinting = false;
+            //source.panStereo = 0.664f;
             anim.SetBool("running", running);
-
+            Hammer_2D.GetComponent<Light2D>().enabled = false;
         }
        else if (horizontalInput < -0.01f)
        {
@@ -165,7 +191,9 @@ private void OnCollisionExit2D(Collision2D collision)
             speed = 18;
             running = true;
             sprinting = false;
+          //  source.panStereo = -0.664f;
             anim.SetBool("running", running);
+            Hammer_2D.GetComponent<Light2D>().enabled = false;
         }
 
        
@@ -183,6 +211,7 @@ private void OnCollisionExit2D(Collision2D collision)
                     anim.SetBool("sprinting", sprinting);
                     anim.SetBool("running", running);
                     anim.SetBool("IsOnGround", grounded);
+                    Hammer_2D.GetComponent<Light2D>().enabled = false;
                     //Debug.Log("Running");
                     jumpPower = 15.15f;
                     // Debug.Log(jumpPower);
@@ -225,6 +254,10 @@ private void OnCollisionExit2D(Collision2D collision)
            // moving = true;
             boostAttack = false;
             attacking = false;
+            if (source.volume <= 0.800)
+            {
+                source.volume += Time.deltaTime;
+            } 
         }
             
 
@@ -241,8 +274,12 @@ private void OnCollisionExit2D(Collision2D collision)
                             transform.position = new Vector2(transform.position.x, UpdatePosition.y); // This would stick the player down the y-axis
                             attacking = true;
                             anim.SetBool("attacking", attacking);
-                            // Debug.Log(-Time.deltaTime);
-                            StartCoroutine(Cooldown4());
+                        source.volume = 0.15f;
+                        source.panStereo = 0.664f;
+                        Hammer_2D.GetComponent<Light2D>().enabled = false;
+                        source.PlayOneShot(clip2);
+                        // Debug.Log(-Time.deltaTime);
+                        StartCoroutine(Cooldown4());
                     }
                     else if (plr.flipX == true && isCooldown4 == false && grounded == true)
                     {
@@ -252,7 +289,11 @@ private void OnCollisionExit2D(Collision2D collision)
                             // Debug.Log(Time.deltaTime);
                             attacking = true;
                             anim.SetBool("attacking", attacking);
-                           StartCoroutine(Cooldown4());
+                        source.volume = 0.13f;
+                        Hammer_2D.GetComponent<Light2D>().enabled = false;
+                        source.panStereo = -0.664f;
+                        source.PlayOneShot(clip3);
+                        StartCoroutine(Cooldown4());
                         }
                     }
                 }

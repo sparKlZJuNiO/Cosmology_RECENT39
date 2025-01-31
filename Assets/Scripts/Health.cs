@@ -21,6 +21,9 @@ public class Health : MonoBehaviour
 
     private Rigidbody2D rb;
 
+    public AudioSource source;
+    public AudioClip clip;
+
     Animator anim;
 
     [SerializeField]  private bool Touched = false;
@@ -39,13 +42,6 @@ public class Health : MonoBehaviour
         if (collision.gameObject.tag == ("Player"))
         {
             Touched = true; // How many times has the player collided with the enemy
-        }
-
-
-        if (collision.gameObject.tag == ("bullet"))
-        {
-            //Damage(10);
-            Debug.Log("Here");
         }
 
         if (collision.gameObject.tag == ("door"))
@@ -126,6 +122,8 @@ public class Health : MonoBehaviour
             death = true;
             anim.SetBool("death", death);
             rb.tag = "Untagged";
+            source.PlayOneShot(clip);
+            source.volume = 0.650f;
             rb.GetComponent<BoxCollider2D>().offset = new Vector2(-0.1860085f, -0.7303029f);
             rb.GetComponent<BoxCollider2D>().size = new Vector2(2.807747f, 0.9384806f);
             rb.GetComponent<BoxCollider2D>().isTrigger = true;
