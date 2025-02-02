@@ -11,7 +11,10 @@ public class EnemyShooting2 : MonoBehaviour
     public Transform bulletPos2;
     public Transform bulletPos3;
     private Rigidbody2D rb;
-    public bool shooting = false;
+    public AudioSource source;
+    public AudioClip clip;
+    public bool shooting;
+    public bool shooting2;
     Animator anim;
 
     [SerializeField] private float timer;
@@ -22,6 +25,7 @@ public class EnemyShooting2 : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         anim = GetComponent<Animator>();
         rb = this.GetComponent<Rigidbody2D>();
+        shooting2 = rb.GetComponent<EnemyMovement2>().shooting;
     }
 
     // Update is called once per frame
@@ -31,21 +35,22 @@ public class EnemyShooting2 : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.transform.position);
         //Debug.Log(distance);
 
-        anim.SetBool("shooting", shooting);
 
-        if (distance < 15 && rb.GetComponent<Health>().death == false)
+
+        if (distance < 18 && rb.GetComponent<Health>().death == false && shooting2 == false)
         {
             timer += Time.deltaTime;
 
-            if (timer > 0.8f)
+            if (timer > 1.2f)
             {
                 timer = 0;
                 shoot();
             }
         }
-        else
+        else if (rb.GetComponent<Health>().death == true)
         {
             shooting = false;
+            anim.SetBool("shooting", shooting2);
         }
     }
 
@@ -55,5 +60,8 @@ public class EnemyShooting2 : MonoBehaviour
         Instantiate(bullet, bulletPos2.position, Quaternion.identity);
         Instantiate(bullet, bulletPos3.position, Quaternion.identity);
         shooting = true;
+        source.PlayOneShot(clip);
+        source.volume = 0.350f;
+        anim.SetBool("shooting", shooting2);
     }
 }

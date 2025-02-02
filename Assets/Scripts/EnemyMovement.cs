@@ -12,9 +12,6 @@ public class EnemyMovement : MonoBehaviour
     public bool grounded = false;
     public bool walk = false;
     public bool shooting = false;
-    public AudioSource audioo;
-    public AudioClip audio2o;
-    public AudioClip clip7;
     [SerializeField] private SpriteRenderer enemy;
     private Vector2 UpdatePosition;
     [SerializeField] public GameObject[] waypoints;
@@ -37,8 +34,7 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         float distance = Vector2.Distance(transform.position, player.transform.position);
-                                                                     
-  
+
         if (distance < 20 && rb.GetComponent<Health>().death == false)
         {
             Vector3 direction = player.transform.position - transform.position;
@@ -50,8 +46,6 @@ public class EnemyMovement : MonoBehaviour
             // Debug.Log("Close");
             walk = false;
             shooting = true;
-            //audioo.PlayOneShot(clip7);
-           // audioo.volume = 0.105f;
             rb.GetComponent<EnemyShooting>().shooting = true;
         }
         else if (distance > 20 && rb.GetComponent<Health>().death == false)
@@ -88,6 +82,8 @@ public class EnemyMovement : MonoBehaviour
             shooting = false;
             anim.SetBool("walking", walk);
             anim.SetBool("shooting", shooting);
+            waypoints[0].GetComponent<BoxCollider2D>().isTrigger = false;
+            waypoints[1].GetComponent<BoxCollider2D>().isTrigger = false;
         }
     }
 

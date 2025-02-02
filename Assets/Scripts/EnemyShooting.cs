@@ -9,6 +9,8 @@ public class EnemyShooting : MonoBehaviour
     public GameObject bullet;
     public Transform bulletPos;
     private Rigidbody2D rb;
+    public AudioSource source;
+    public AudioClip clip;
     public bool shooting;
     public bool shooting2;
     Animator anim;
@@ -54,6 +56,8 @@ public class EnemyShooting : MonoBehaviour
     {
         Instantiate(bullet, bulletPos.position, Quaternion.identity);
         shooting = true;
+        source.PlayOneShot(clip);
+        source.volume = 0.350f;
         anim.SetBool("shooting", shooting2);
     }
 }

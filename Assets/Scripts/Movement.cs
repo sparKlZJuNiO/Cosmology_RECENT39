@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.U2D;
 using UnityEngine.UIElements;
@@ -26,6 +27,8 @@ public class Movement : MonoBehaviour
     private bool attacking = false;
     [SerializeField] private int jumps = 0;
    [SerializeField] private int maxJumps = 2;
+    public bool gasIn;
+    public GameObject cameraoff;
     private bool isCooldown2 = false;
     private bool running = false;
     private bool isCooldown3 = false;
@@ -88,12 +91,18 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == ("isOnGround") || (collision.gameObject.tag == ("stairs")))
+        if (collision.gameObject.tag == ("isOnGround") || (collision.gameObject.tag == ("stairs") || (collision.gameObject.tag == ("height"))))
         {
             grounded = true;
             UpdatePosition = new Vector2(transform.position.x, transform.position.y); // Keeps the y-axis height
             source.PlayOneShot(clip4);
+            cameraoff.GetComponent<CameraFollow>().yOffset = 4.41f;
             // Debug.Log("Works!");
+        }
+
+        if (collision.gameObject.tag == ("height"))
+        {
+            cameraoff.GetComponent<CameraFollow>().yOffset = -2.48f;
         }
 
         if (collision.gameObject.tag == ("laser"))
@@ -113,7 +122,24 @@ public class Movement : MonoBehaviour
 
 }
 
-private void OnCollisionExit2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("gas"))
+        {
+            gasIn = true;
+        }
+    }
+
+
+    private void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag("gas"))
+        {
+            gasIn = false;
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
     {
         if (collision.gameObject.tag == ("isOnGround") || (collision.gameObject.tag == ("stairs")))
         {
@@ -165,6 +191,11 @@ private void OnCollisionExit2D(Collision2D collision)
                 anim.SetBool("attacking", attacking);
                 Hammer_2D.GetComponent<Light2D>().enabled = false;
             }
+        }
+
+        if (gasIn == true)
+        {
+            rb.GetComponent<PlayerHealth>().currentHealth -= Time.deltaTime * 20;
         }
 
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))

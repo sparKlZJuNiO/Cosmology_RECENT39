@@ -8,7 +8,7 @@ using System.Runtime.CompilerServices;
 public class PlayerHealth : MonoBehaviour
 {
     [SerializeField] private int maxHealth;
-    public int currentHealth;
+    public float currentHealth;
     private GameObject player;
     public GameObject gameOverUI;
     public GameObject fade;

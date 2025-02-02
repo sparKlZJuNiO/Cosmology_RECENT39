@@ -13,6 +13,10 @@ public class EnemyBulletScript : MonoBehaviour
     public GameObject enemy;
     public bool death = false;
     public float force;
+    public GameObject sourcey;
+    public AudioSource source;
+    public AudioClip clip;
+    public AudioClip clip2;
     Animator anim;
     private float timer;
 
@@ -22,8 +26,10 @@ public class EnemyBulletScript : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         player = GameObject.FindGameObjectWithTag("Player");
         player2 = GetComponent<SpriteRenderer>();
+        sourcey = GameObject.FindGameObjectWithTag("audio source");
         enemy = GameObject.FindGameObjectWithTag("enemy");
         death = enemy.GetComponent<Health>().death;
+        source = sourcey.GetComponent<AudioSource>();
 
         if (player != null)
         {
@@ -42,6 +48,7 @@ public class EnemyBulletScript : MonoBehaviour
     void Update()
     {
         timer += Time.deltaTime;
+        sourcey = GameObject.FindGameObjectWithTag("audio source");
 
         enemy = GameObject.FindGameObjectWithTag("enemy");
 
@@ -50,7 +57,7 @@ public class EnemyBulletScript : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (timer > 10)
+        if (timer > 2.2f)
         {
             Destroy(gameObject);
         }
@@ -58,12 +65,19 @@ public class EnemyBulletScript : MonoBehaviour
 
    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == ("enemy"))
+        if (collision.gameObject.tag == ("enemy") && enemy.GetComponent<EnemyMovement>().waypointing == false && enemy.GetComponent<Health>().death == false)
         {
             death = true;
         }
     }
 
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == ("enemy"))
+        {
+            rb.tag = "Untagged";
+        }
+    }
 
 
             private void OnTriggerEnter2D(Collider2D other)
@@ -74,6 +88,8 @@ public class EnemyBulletScript : MonoBehaviour
             {
                 other.gameObject.GetComponent<PlayerHealth>().currentHealth -= 20;
                 player2.enabled = false;
+                source.PlayOneShot(clip2);
+                source.volume = 0.455f;
                 Destroy(gameObject);
             }
 
@@ -85,6 +101,8 @@ public class EnemyBulletScript : MonoBehaviour
             rb.velocity = new Vector2(-direction.x, -direction.y).normalized * force; // Controls the speed of the bullet
             float rot = Mathf.Atan2(-direction.y, -direction.x) * Mathf.Rad2Deg; // Looks for a float y and x
             transform.rotation = Quaternion.Euler(0, 0, rot);
+            source.PlayOneShot(clip);
+            source.volume = 0.350f;
             rb.GetComponent<BoxCollider2D>().isTrigger = false;
             // Debug.Log("Deflect");
         }

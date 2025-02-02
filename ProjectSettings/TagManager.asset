@@ -13,6 +13,8 @@ TagManager:
   - waypoint2
   - stairs
   - audio source
+  - gas
+  - height
   layers:
   - Default
   - TransparentFX

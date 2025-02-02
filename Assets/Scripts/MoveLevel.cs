@@ -9,6 +9,8 @@ public class MoveLevel : MonoBehaviour
     [SerializeField] public int SceneNumber;
     [SerializeField] Animator transitionAnim;
     public float timer = 1;
+    public AudioSource source;
+    public AudioClip clip;
     public bool checker = false;
 
     private void Update()
@@ -32,6 +34,8 @@ public class MoveLevel : MonoBehaviour
         {
             transitionAnim.SetTrigger("End");
             checker = true;
+            source.PlayOneShot(clip);
+            source.volume = 350;
         }
     }
 }
