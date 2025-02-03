@@ -201,7 +201,7 @@ public class Movement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.A))
             {
             source.PlayOneShot(clip);
-            source.volume = 0.100f;
+            //source.volume = 0.100f;
             Hammer_2D.GetComponent<Light2D>().enabled = false;
         }
                

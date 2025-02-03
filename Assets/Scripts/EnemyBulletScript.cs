@@ -57,7 +57,7 @@ public class EnemyBulletScript : MonoBehaviour
             Destroy(gameObject);
         }
 
-        if (timer > 2.2f)
+        if (timer > 3)
         {
             Destroy(gameObject);
         }
@@ -65,7 +65,7 @@ public class EnemyBulletScript : MonoBehaviour
 
    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == ("enemy") && enemy.GetComponent<EnemyMovement>().waypointing == false && enemy.GetComponent<Health>().death == false)
+        if (collision.gameObject.tag == ("enemy"))
         {
             death = true;
         }

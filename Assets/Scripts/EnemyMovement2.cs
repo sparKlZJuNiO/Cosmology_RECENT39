@@ -87,8 +87,6 @@ public class EnemyMovement2 : MonoBehaviour
             walk = true;
             shooting = false;
             anim.SetBool("walking", walk);
-            waypoints[0].GetComponent<BoxCollider2D>().isTrigger = false;
-            waypoints[1].GetComponent<BoxCollider2D>().isTrigger = false;
             anim.SetBool("shooting", shooting);
         }
     }
