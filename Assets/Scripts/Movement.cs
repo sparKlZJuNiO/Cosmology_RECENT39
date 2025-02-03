@@ -28,6 +28,7 @@ public class Movement : MonoBehaviour
     [SerializeField] private int jumps = 0;
    [SerializeField] private int maxJumps = 2;
     public bool gasIn;
+    public bool timey;
     public GameObject cameraoff;
     private bool isCooldown2 = false;
     private bool running = false;
@@ -37,6 +38,9 @@ public class Movement : MonoBehaviour
     public AudioClip clip2;
     public AudioClip clip3;
     public AudioClip clip4;
+    public AudioClip clip7;
+    public AudioClip clip8;
+    [SerializeField] GameObject [] boxes;
     public AudioClip clip5;
     public AudioClip clip6;
     private bool sprinting = false;
@@ -56,6 +60,7 @@ public class Movement : MonoBehaviour
         plr = GetComponent<SpriteRenderer>();
         target = transform.position;
         anim = GetComponent<Animator>();
+        boxes = GameObject.FindGameObjectsWithTag("event");
     }
 
     private IEnumerator Cooldown()
@@ -91,12 +96,12 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == ("isOnGround") || (collision.gameObject.tag == ("stairs") || (collision.gameObject.tag == ("height"))))
+        if (collision.gameObject.tag == ("isOnGround") || (collision.gameObject.tag == ("stairs") || (collision.gameObject.tag == ("height") || (collision.gameObject.tag == ("touchEvent")))))
         {
             grounded = true;
             UpdatePosition = new Vector2(transform.position.x, transform.position.y); // Keeps the y-axis height
             source.PlayOneShot(clip4);
-            cameraoff.GetComponent<CameraFollow>().yOffset = 4.41f;
+            cameraoff.GetComponent<CameraFollow>().yOffset = 5.52f;
             // Debug.Log("Works!");
         }
 
@@ -112,15 +117,38 @@ public class Movement : MonoBehaviour
         }
 
         if (collision.gameObject.tag == ("waypoint"))
-            {
-                collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-            }
-         if (collision.gameObject.tag == ("waypoint2"))
-            {
-                collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
-            }
+        {
+            collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        }
+        if (collision.gameObject.tag == ("touchEvent"))
+        {
+            boxes[0].AddComponent<Rigidbody2D>();
+            boxes[1].AddComponent<Rigidbody2D>();
+            boxes[2].AddComponent<Rigidbody2D>();
+            boxes[3].AddComponent<Rigidbody2D>();
+            boxes[4].AddComponent<Rigidbody2D>();
+            timey = true;
+            Time.timeScale = 0.1f;
+            source.PlayOneShot(clip7);
+            rb.GetComponent<Rigidbody2D>().gravityScale = 191.34f;
+        }
+        if (collision.gameObject.tag == ("waypoint2"))
+        {
+            collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
+        }
 
-}
+        if (collision.gameObject.tag == ("event"))
+        {
+            plr.GetComponent<PlayerHealth>().currentHealth = 0;
+            boxes[0].GetComponent<Rigidbody2D>().mass = 135.31f;
+            boxes[1].GetComponent<Rigidbody2D>().mass = 135.31f;
+            boxes[2].GetComponent<Rigidbody2D>().mass = 135.31f;
+            boxes[3].GetComponent<Rigidbody2D>().mass = 135.31f;
+            boxes[4].GetComponent<Rigidbody2D>().mass = 135.31f;
+            Time.timeScale = 1f;
+            source.PlayOneShot(clip8);
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -157,6 +185,22 @@ public class Movement : MonoBehaviour
         {
             collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = false;
         }
+        if (collision.gameObject.tag == ("touchEvent"))
+        {
+            boxes[0].AddComponent<Rigidbody2D>();
+            boxes[1].AddComponent<Rigidbody2D>();
+            boxes[2].AddComponent<Rigidbody2D>();
+            boxes[3].AddComponent<Rigidbody2D>();
+            boxes[4].AddComponent<Rigidbody2D>();
+            collision.gameObject.tag = "isOnGround";
+            source.PlayOneShot(clip8);
+            boxes[0].GetComponent<Rigidbody2D>().tag = "Untagged";
+            boxes[1].GetComponent<Rigidbody2D>().tag = "Untagged";
+            boxes[2].GetComponent<Rigidbody2D>().tag = "Untagged";
+            boxes[3].GetComponent<Rigidbody2D>().tag = "Untagged";
+            boxes[4].GetComponent<Rigidbody2D>().tag = "Untagged";
+            rb.GetComponent<Rigidbody2D>().gravityScale = 3.49f;
+        }
     }
     void Update()
     {
@@ -164,6 +208,10 @@ public class Movement : MonoBehaviour
 
         speed = 5;
 
+        if (timey == true && Time.timeScale < 1)
+        {
+            Time.timeScale += Time.deltaTime;
+        }
 
         running = false;
         sprinting = false;

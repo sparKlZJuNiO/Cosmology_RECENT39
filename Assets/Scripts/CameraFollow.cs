@@ -5,7 +5,7 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour
 {
     [SerializeField] public float followSpeed = 2f; // Follows target (Player)
-    [SerializeField] public float yOffset = 1f; // Fixes height
+    [SerializeField] public float yOffset = 5.52f; // Fixes height
     public Transform target; // Position of Player
 
             // Update is called once per frame
