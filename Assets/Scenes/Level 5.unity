@@ -3628,12 +3628,16 @@ MonoBehaviour:
   jumps: 0
   maxJumps: 2
   gasIn: 0
+  timey: 0
   cameraoff: {fileID: 519420028}
   source: {fileID: 706422158}
   clip: {fileID: 8300000, guid: e9f703b97cbc35146a490a8713f2684e, type: 3}
   clip2: {fileID: 8300000, guid: 9a17133ec5381c44e8ff9087465c1826, type: 3}
   clip3: {fileID: 8300000, guid: 996a5ee564e262244b2db2d083aed9ab, type: 3}
   clip4: {fileID: 8300000, guid: cf50905a885c59d4ebaf3bf1b3c53258, type: 3}
+  clip7: {fileID: 0}
+  clip8: {fileID: 0}
+  boxes: []
   clip5: {fileID: 8300000, guid: 7367d5c7855090247a63b4d1583756ba, type: 3}
   clip6: {fileID: 8300000, guid: c087b918c1598f24c948bd5d09a7876c, type: 3}
   plrObject: {fileID: 362729909}
@@ -3782,7 +3786,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8fecfd52de1e9443a5676bcf0fc6206, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  SceneNumber: 3
+  SceneNumber: 5
   transitionAnim: {fileID: 319380424}
   timer: 1.5
   source: {fileID: 706422158}
