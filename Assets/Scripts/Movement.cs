@@ -194,11 +194,11 @@ public class Movement : MonoBehaviour
             boxes[4].AddComponent<Rigidbody2D>();
             collision.gameObject.tag = "isOnGround";
             source.PlayOneShot(clip8);
-            boxes[0].GetComponent<Rigidbody2D>().tag = "Untagged";
-            boxes[1].GetComponent<Rigidbody2D>().tag = "Untagged";
-            boxes[2].GetComponent<Rigidbody2D>().tag = "Untagged";
-            boxes[3].GetComponent<Rigidbody2D>().tag = "Untagged";
-            boxes[4].GetComponent<Rigidbody2D>().tag = "Untagged";
+            boxes[0].GetComponent<Rigidbody2D>().tag = "isOnGround";
+            boxes[1].GetComponent<Rigidbody2D>().tag = "isOnGround";
+            boxes[2].GetComponent<Rigidbody2D>().tag = "isOnGround";
+            boxes[3].GetComponent<Rigidbody2D>().tag = "isOnGround";
+            boxes[4].GetComponent<Rigidbody2D>().tag = "isOnGround";
             rb.GetComponent<Rigidbody2D>().gravityScale = 3.49f;
         }
     }

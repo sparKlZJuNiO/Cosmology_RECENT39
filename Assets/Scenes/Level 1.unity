@@ -2812,7 +2812,7 @@ Transform:
   m_GameObject: {fileID: 362729907}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -69.38, y: 0.4, z: -3.5674}
+  m_LocalPosition: {x: -53.29, y: 0.4, z: -3.5674}
   m_LocalScale: {x: 1.184796, y: 1.184796, z: 1.184796}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -7135,23 +7135,24 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 1
     m_LineSpacing: 0.75
-  m_Text: 'A,D keys : Move
+  m_Text: 'A,D or arrow keys : Move
 
 
-    Hit to deflect bullets
+    Left click: Hit to deflect bullets
 
 
-    OR attack enemies
+    OR
+    attack enemies
 
 
-    Shift
-    to sprint
+    Shift to sprint
 
 
-    Space to jump
+    Spacebar to jump
 
 
-    OR double tap to double jump'
+    OR double spacebar
+    to double jump'
 --- !u!222 &1051538484
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -8713,7 +8714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentTime: 0
   timeScale: 4
-  startingTime: 70
+  startingTime: 90
   gas: {fileID: 1681186236}
   countdownText: {fileID: 427682403}
 --- !u!4 &1355991211
