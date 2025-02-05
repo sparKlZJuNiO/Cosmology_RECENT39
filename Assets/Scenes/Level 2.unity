@@ -2847,15 +2847,20 @@ MonoBehaviour:
   grounded: 0
   isCooldown4: 0
   Hammer_2D: {fileID: 578521249}
+  attacking: 0
   jumps: 0
   maxJumps: 2
   gasIn: 0
+  timey: 0
   cameraoff: {fileID: 519420028}
   source: {fileID: 706422158}
   clip: {fileID: 8300000, guid: e9f703b97cbc35146a490a8713f2684e, type: 3}
   clip2: {fileID: 8300000, guid: 9a17133ec5381c44e8ff9087465c1826, type: 3}
   clip3: {fileID: 8300000, guid: 996a5ee564e262244b2db2d083aed9ab, type: 3}
   clip4: {fileID: 8300000, guid: cf50905a885c59d4ebaf3bf1b3c53258, type: 3}
+  clip7: {fileID: 0}
+  clip8: {fileID: 0}
+  boxes: []
   clip5: {fileID: 8300000, guid: 7367d5c7855090247a63b4d1583756ba, type: 3}
   clip6: {fileID: 8300000, guid: c087b918c1598f24c948bd5d09a7876c, type: 3}
   plrObject: {fileID: 362729909}
@@ -3302,7 +3307,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1873549, g: 0.8037735, b: 0.14407252, a: 1}
+  m_Color: {r: 0.44490528, g: 0.81886786, b: 0.41870406, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3310,8 +3315,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
+    m_Font: {fileID: 12800000, guid: d038cf253daf1e74dac442a5b159a096, type: 3}
+    m_FontSize: 43
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 14
@@ -9212,8 +9217,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 35
+    m_Font: {fileID: 12800000, guid: d038cf253daf1e74dac442a5b159a096, type: 3}
+    m_FontSize: 51
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 14

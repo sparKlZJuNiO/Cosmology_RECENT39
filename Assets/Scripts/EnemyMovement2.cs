@@ -12,9 +12,6 @@ public class EnemyMovement2 : MonoBehaviour
     public bool grounded = false;
     public bool walk = false;
     public bool shooting = false;
-    public AudioSource audioo;
-    public AudioClip audio2o;
-    public AudioClip clip7;
     [SerializeField] private SpriteRenderer enemy;
     private Vector2 UpdatePosition;
     [SerializeField] public GameObject[] waypoints;

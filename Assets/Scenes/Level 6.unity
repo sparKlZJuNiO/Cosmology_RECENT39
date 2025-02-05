@@ -1016,7 +1016,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 151628397}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 31f55752c1b6c804fab7f241a4c6fb48, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -3409,6 +3409,7 @@ MonoBehaviour:
   grounded: 0
   isCooldown4: 0
   Hammer_2D: {fileID: 578521249}
+  attacking: 0
   jumps: 0
   maxJumps: 2
   gasIn: 0
@@ -3976,7 +3977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.12632278, g: 0.81886786, b: 0.08497676, a: 1}
+  m_Color: {r: 0.44139248, g: 0.86415094, b: 0.4157707, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3984,8 +3985,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
+    m_Font: {fileID: 12800000, guid: d038cf253daf1e74dac442a5b159a096, type: 3}
+    m_FontSize: 40
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 14
@@ -9743,7 +9744,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1120726825}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 31f55752c1b6c804fab7f241a4c6fb48, type: 2}
+  m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -13326,8 +13327,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 35
+    m_Font: {fileID: 12800000, guid: d038cf253daf1e74dac442a5b159a096, type: 3}
+    m_FontSize: 52
     m_FontStyle: 1
     m_BestFit: 1
     m_MinSize: 14

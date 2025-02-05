@@ -52,8 +52,8 @@ public class Health : MonoBehaviour
 
          if (collision.gameObject.tag == ("bullet"))
             {
-            Die();
-            }
+            Damage(7);
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -74,7 +74,7 @@ public class Health : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) & Touched == true && player.GetComponent<Movement>().isCooldown4 == false)
         {
-            Damage(10);
+            Damage(3);
         }
     }
        

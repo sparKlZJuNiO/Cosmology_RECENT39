@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.Mathematics;
+using UnityEditor.ShaderGraph.Serialization;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.Rendering.Universal;
@@ -24,7 +25,7 @@ public class Movement : MonoBehaviour
     private bool moving = false;
     private bool boostAttack = false;
     public GameObject Hammer_2D;
-    private bool attacking = false;
+    public bool attacking = false;
     [SerializeField] private int jumps = 0;
    [SerializeField] private int maxJumps = 2;
     public bool gasIn;
@@ -169,9 +170,8 @@ public class Movement : MonoBehaviour
 
     private void OnCollisionExit2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == ("isOnGround") || (collision.gameObject.tag == ("stairs")))
+        if (collision.gameObject.tag == ("isOnGround") || (collision.gameObject.tag == ("stairs") || (collision.gameObject.tag == ("height") || (collision.gameObject.tag == ("touchEvent")))))
         {
-            grounded = false;
             boostAttack = false;
             anim.SetBool("boostattacking", boostAttack);
             //Debug.Log("not!");
@@ -260,19 +260,27 @@ public class Movement : MonoBehaviour
             plr.flipX = false;
             speed = 18;
             running = true;
+            attacking = false;
+            boostAttack = false;
             sprinting = false;
             //source.panStereo = 0.664f;
             anim.SetBool("running", running);
+                 anim.SetBool("attacking", attacking);
+            anim.SetBool("boostattacking", boostAttack);
             Hammer_2D.GetComponent<Light2D>().enabled = false;
         }
        else if (horizontalInput < -0.01f)
        {
             plr.flipX = true;
             speed = 18;
+            attacking = false;
+            boostAttack = false;
             running = true;
             sprinting = false;
           //  source.panStereo = -0.664f;
             anim.SetBool("running", running);
+            anim.SetBool("attacking", attacking);
+            anim.SetBool("boostattacking", boostAttack);
             Hammer_2D.GetComponent<Light2D>().enabled = false;
         }
 
@@ -320,7 +328,6 @@ public class Movement : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, jumpPower);
             // Debug.Log("Jumping");
             grounded = false;
-            attacking = false;
             boostAttack = false;
             jumps += 1;
             StartCoroutine(Cooldown());
@@ -332,8 +339,6 @@ public class Movement : MonoBehaviour
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)) // || is OR
         {
            // moving = true;
-            boostAttack = false;
-            attacking = false;
             if (source.volume <= 0.800)
             {
                 source.volume += Time.deltaTime;
@@ -341,8 +346,7 @@ public class Movement : MonoBehaviour
         }
             
 
-        if (Input.GetMouseButton(0))
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A) ) // || is OR
+        if (Input.GetMouseButton(0) && (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.A)))
             {
                 {
 

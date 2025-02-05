@@ -5,6 +5,7 @@ using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class Menu : MonoBehaviour
 {
@@ -14,11 +15,13 @@ public class Menu : MonoBehaviour
     public float num3 = 1;
     public bool booom = false;
     [SerializeField] Animator transitionAnim;
+    [SerializeField] Animator transitionAnim2;
     public bool booom2 = false;
     [SerializeField] GameObject Fade;
     [SerializeField] GameObject Fade2;
     [SerializeField] GameObject Fade3;
     [SerializeField] GameObject Fade4;
+    [SerializeField] Text textyyy;
     public bool booom3 = false;
     public AudioSource source;
     public AudioClip clip;
@@ -52,6 +55,46 @@ public class Menu : MonoBehaviour
             Fade2.SetActive(true);
             Fade3.SetActive(true);
             Fade4.SetActive(true);
+            if (num <= 12)
+            {
+                transitionAnim2.SetTrigger("End");
+                textyyy.text = "Ignition sequence start";
+            }
+            if (num <= 9)
+            {
+                transitionAnim2.SetTrigger("Start");
+                textyyy.text = "6";
+            }
+            if (num <= 8)
+            {
+                transitionAnim2.SetTrigger("Start");
+                textyyy.text = "5";
+            }
+            if (num <= 7)
+            {
+                transitionAnim2.SetTrigger("Start");
+                textyyy.text = "4";
+            }
+            if (num <= 6)
+            {
+                transitionAnim2.SetTrigger("Start");
+                textyyy.text = "4";
+            }
+            if (num <= 5)
+            {
+                transitionAnim2.SetTrigger("Start");
+                textyyy.text = "3";
+            }
+            if (num <= 4)
+            {
+                transitionAnim2.SetTrigger("Start");
+                textyyy.text = "2";
+            }
+            if (num <= 3)
+            {
+                transitionAnim2.SetTrigger("Start");
+                textyyy.text = "1";
+            }
             if (num < 1)
             {
                 SceneManager.LoadScene(1);
@@ -73,7 +116,6 @@ public class Menu : MonoBehaviour
     {
         source.PlayOneShot(clip);
         booom = true;
-
     }
 
     public void Quit()
