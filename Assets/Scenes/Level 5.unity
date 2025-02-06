@@ -2810,7 +2810,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63d04bf7e09d99645a69772cc032253b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lungeBar: {fileID: 0}
+  lungeBar: {fileID: 1990010277}
   lungeAmount: 100
 --- !u!4 &305863346
 Transform:
@@ -3230,16 +3230,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 100
   currentHealth: 100
-  gameOverUI: {fileID: 0}
-  fade: {fileID: 0}
+  gameOverUI: {fileID: 54040821}
+  fade: {fileID: 2023697365}
   playerIsDead: 0
   fullHeart: {fileID: 21300000, guid: 56dfe2d5e54038848ab369e4554d8b8c, type: 3}
   emptyHeart: {fileID: 21300000, guid: 7b166534fae778c46b9b34225a504394, type: 3}
   heartContainers:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 1612725180}
+  - {fileID: 1642338569}
+  - {fileID: 1144012922}
+  - {fileID: 4691401}
 --- !u!114 &362729920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4029,7 +4029,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 362729919}
         m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
         m_MethodName: MainMenu
         m_Mode: 1
@@ -6173,7 +6173,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 362729919}
         m_TargetAssemblyTypeName: PlayerHealth, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
