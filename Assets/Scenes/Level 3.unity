@@ -9948,7 +9948,7 @@ MonoBehaviour:
   timeScale: 4
   startingTime: 50
   gas: {fileID: 1681186236}
-  countdownText: {fileID: 0}
+  countdownText: {fileID: 1136571104}
 --- !u!4 &1355991211
 Transform:
   m_ObjectHideFlags: 0

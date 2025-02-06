@@ -11665,7 +11665,7 @@ MonoBehaviour:
   timeScale: 4
   startingTime: 45
   gas: {fileID: 810942814}
-  countdownText: {fileID: 0}
+  countdownText: {fileID: 1543296490}
 --- !u!1 &1364346353
 GameObject:
   m_ObjectHideFlags: 0
