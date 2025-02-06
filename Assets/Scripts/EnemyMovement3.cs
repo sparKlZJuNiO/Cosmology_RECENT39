@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using UnityEngine;
 using static Unity.VisualScripting.Member;
 using static UnityEngine.GraphicsBuffer;
@@ -14,9 +15,7 @@ public class EnemyMovement3 : MonoBehaviour
     public bool shooting = false;
     [SerializeField] private SpriteRenderer enemy;
     private Vector2 UpdatePosition;
-    [SerializeField] public GameObject[] waypoints;
     public bool Ready = false;
-    public bool waypointing = true;
     Animator anim;
     public int waypointIndex = 0;
 
@@ -26,7 +25,6 @@ public class EnemyMovement3 : MonoBehaviour
     {
         rb = this.GetComponent<Rigidbody2D>();
         enemy = GetComponent<SpriteRenderer>();
-        transform.position = waypoints[waypointIndex].transform.position;
         anim = GetComponent<Animator>();
     }
 
@@ -36,14 +34,13 @@ public class EnemyMovement3 : MonoBehaviour
         float distance = Vector2.Distance(transform.position, player.transform.position);
                                                                      
   
-        if (distance < 20 && rb.GetComponent<Health>().death == false)
+        if (distance < 20 && rb.GetComponent<Health>().death == false && player.GetComponent<Movement>().bossfightStart == true)
         {
             Vector3 direction = player.transform.position - transform.position;
             direction.Normalize();
             movement = direction;
             enemy.flipX = player.transform.position.x < this.transform.position.x; // Flips enemy
             Ready = true;
-            waypointing = false;
             // Debug.Log("Close");
             walk = false;
             shooting = true;
@@ -51,42 +48,24 @@ public class EnemyMovement3 : MonoBehaviour
            // audioo.volume = 0.105f;
             rb.GetComponent<EnemyShooting3>().shooting = true;
         }
-        else if (distance > 20 && rb.GetComponent<Health>().death == false)
+        else if (distance > 20 && rb.GetComponent<Health>().death == false && player.GetComponent<Movement>().bossfightStart == true)
         {
             Ready = false;
             shooting = false;
-            waypointing = true;
             walk = true;
             rb.GetComponent<EnemyShooting3>().shooting = false;
            // Debug.Log("Distance");
         }
 
-       if (rb.GetComponent<Health>().death == false && Ready == true && waypointing == false)
+       if (rb.GetComponent<Health>().death == false && Ready == true&& player.GetComponent<Movement>().bossfightStart == true)
        {
             moveCharacter(movement);
       }
-        else
-        {
-            Ready = false;
-            waypointing = true;
-       }
 
-        // Move Enemy
-        Move();
+       
     }
 
-    private void Move()
-    {
-        if (waypointIndex <= waypoints.Length - 1 && waypointing == true && Ready == false && rb.GetComponent<Health>().death == false)
-        {
-            transform.position = Vector3.MoveTowards(transform.position, waypoints[waypointIndex].transform.position, moveSpeed * Time.deltaTime);
-            moveSpeed = 5f;
-            walk = true;
-            shooting = false;
-            anim.SetBool("walking", walk);
-            anim.SetBool("shooting", shooting);
-        }
-    }
+  
 
     private void OnCollisionExit2D(Collision2D collision)
     {
@@ -108,18 +87,6 @@ public class EnemyMovement3 : MonoBehaviour
             grounded = true;
             anim.SetBool("grounded", grounded);
         }
-
-        if (collision.gameObject.tag == ("waypoint") && waypointing == true)
-        {
-                waypointIndex = 1;
-                enemy.flipX = false;
-        }
-       
-        if (collision.gameObject.tag == ("waypoint2") && waypointing == true)
-        {
-            enemy.flipX = true;
-            waypointIndex = 0;
-        }
         if (collision.gameObject.tag == ("stairs"))
         {
             rb.velocity = Vector2.up * 12;
@@ -129,11 +96,8 @@ public class EnemyMovement3 : MonoBehaviour
 
     void moveCharacter(Vector2 direction)
     {
-        if (Ready == true && waypointing == false && rb.GetComponent<Health>().death == false) 
+        if (Ready == true && rb.GetComponent<Health>().death == false && player.GetComponent<Movement>().bossfightStart == true) 
         {
-            waypointIndex = 1;
-            waypoints[0].GetComponent<BoxCollider2D>().isTrigger = true;
-            waypoints[1].GetComponent<BoxCollider2D>().isTrigger = true;
             walk = false;
             shooting = true;
             anim.SetBool("walking", walk);

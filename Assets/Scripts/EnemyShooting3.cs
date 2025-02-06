@@ -36,7 +36,7 @@ public class EnemyShooting3 : MonoBehaviour
 
 
 
-        if (distance < 18 && rb.GetComponent<Health>().death == false && shooting2 == false)
+        if (distance < 18 && rb.GetComponent<Health>().death == false && shooting2 == false && player.GetComponent<Movement>().bossfightStart == true)
         {
             timer += Time.deltaTime;
 

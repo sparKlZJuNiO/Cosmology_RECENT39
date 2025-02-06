@@ -17,6 +17,9 @@ TagManager:
   - height
   - event
   - touchEvent
+  - glasstrigger
+  - endingtouch
+  - endingdeath
   layers:
   - Default
   - TransparentFX

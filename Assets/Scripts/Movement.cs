@@ -2,12 +2,14 @@ using JetBrains.Annotations;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using Unity.IO.LowLevel.Unsafe;
 using Unity.Mathematics;
 using UnityEditor.ShaderGraph.Serialization;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.U2D;
+using UnityEngine.UI;
 using UnityEngine.UIElements;
 using static Unity.VisualScripting.Member;
 
@@ -23,6 +25,15 @@ public class Movement : MonoBehaviour
     private bool isCooldown = false;
     public bool isCooldown4 = false;
     private bool moving = false;
+    public bool pressedSmash;
+    public GameObject dooorrr;
+    public bool donezy = false;
+    public GameObject mainReadytyyrr;
+    public GameObject Readytyyrr;
+    public float countdownBoss = 12f;
+    public bool countdownBossStarty;
+    public bool bossfightStart;
+    public GameObject Enemybosss;
     private bool boostAttack = false;
     public GameObject Hammer_2D;
     public bool attacking = false;
@@ -34,13 +45,17 @@ public class Movement : MonoBehaviour
     private bool isCooldown2 = false;
     private bool running = false;
     private bool isCooldown3 = false;
+    public Text textyhd;
     public AudioSource source;
     public AudioClip clip;
     public AudioClip clip2;
     public AudioClip clip3;
+    public bool once;
     public AudioClip clip4;
     public AudioClip clip7;
     public AudioClip clip8;
+    public AudioClip clip9;
+    public AudioClip clip10;
     [SerializeField] GameObject [] boxes;
     public AudioClip clip5;
     public AudioClip clip6;
@@ -89,15 +104,15 @@ public class Movement : MonoBehaviour
     private IEnumerator Cooldown4()
     {
         isCooldown4 = false;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.7f);
         isCooldown4 = true;
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.7f);
         isCooldown4 = false;
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.gameObject.tag == ("isOnGround") || (collision.gameObject.tag == ("stairs") || (collision.gameObject.tag == ("height") || (collision.gameObject.tag == ("touchEvent")))))
+        if (collision.gameObject.tag == ("isOnGround") || (collision.gameObject.tag == ("stairs") || (collision.gameObject.tag == ("height") || (collision.gameObject.tag == ("endingtouch") || (collision.gameObject.tag == ("touchEvent"))))))
         {
             grounded = true;
             UpdatePosition = new Vector2(transform.position.x, transform.position.y); // Keeps the y-axis height
@@ -117,10 +132,21 @@ public class Movement : MonoBehaviour
             source.volume = 0.400f;
         }
 
+        if (collision.gameObject.tag == ("endingtouch") && donezy == false)
+        {
+            countdownBossStarty = true;
+        }
+
+        if (collision.gameObject.tag == ("endingdeath"))
+        {
+            rb.GetComponent<PlayerHealth>().currentHealth = 0;
+        }
+
         if (collision.gameObject.tag == ("waypoint"))
         {
             collision.gameObject.GetComponent<BoxCollider2D>().isTrigger = true;
         }
+
         if (collision.gameObject.tag == ("touchEvent"))
         {
             boxes[0].AddComponent<Rigidbody2D>();
@@ -157,6 +183,19 @@ public class Movement : MonoBehaviour
         {
             gasIn = true;
         }
+        if (other.gameObject.CompareTag("glasstrigger") && (Input.GetMouseButton(0)))
+        {
+            dooorrr.tag = "door";
+            pressedSmash = true;
+            Debug.Log("Nice");
+            Readytyyrr.SetActive(true);
+            mainReadytyyrr.SetActive(false);
+            textyhd.text = "NO..........";
+            source.PlayOneShot(clip10);
+            source.volume = 0.750f;
+            Destroy(Enemybosss);
+
+        }
     }
 
 
@@ -175,6 +214,12 @@ public class Movement : MonoBehaviour
             boostAttack = false;
             anim.SetBool("boostattacking", boostAttack);
             //Debug.Log("not!");
+        }
+
+        if (collision.gameObject.tag == ("endingtouch") && once == false)
+        {
+            textyhd.text = "Don't run!";
+            once = true;
         }
 
         if (collision.gameObject.tag == ("waypoint"))
@@ -206,7 +251,49 @@ public class Movement : MonoBehaviour
     {
         float horizontalInput = Input.GetAxis("Horizontal");
 
-        speed = 5;
+        if (countdownBossStarty == false)
+        {
+            speed = 5;
+        }
+
+
+        if (countdownBossStarty == true)
+        {
+            countdownBoss -= Time.deltaTime;
+            speed = 0;
+            if (countdownBoss < 11)
+            {
+                textyhd.text = "Ah it's you..";
+            }
+            if (countdownBoss < 9)
+            {
+                textyhd.text = "You green vermin!";
+            }
+            if (countdownBoss < 7)
+            {
+                textyhd.text = "Tired of my guys that can't do the job..";
+            }
+            if (countdownBoss < 4)
+            {
+                textyhd.text = "Although, I do feel bad for them..";
+            }
+            if (countdownBoss < 0)
+            {
+                textyhd.text = "We locked you away for a reason you know..";
+            }
+            if (countdownBoss < -4)
+            {
+                textyhd.text = "I'll just finish you myself standing right here..";
+            }
+            if (countdownBoss < -6)
+            {
+                bossfightStart = true;
+                countdownBossStarty = false;
+                source.PlayOneShot(clip9);
+                source.volume = 0.650f;
+                donezy = true;
+            }
+        }
 
         if (timey == true && Time.timeScale < 1)
         {
@@ -255,7 +342,7 @@ public class Movement : MonoBehaviour
                
 
         // Flipping player left and right
-        if (horizontalInput > 0.01f)
+        if (horizontalInput > 0.01f && countdownBossStarty == false)
         {
             plr.flipX = false;
             speed = 18;
@@ -269,7 +356,7 @@ public class Movement : MonoBehaviour
             anim.SetBool("boostattacking", boostAttack);
             Hammer_2D.GetComponent<Light2D>().enabled = false;
         }
-       else if (horizontalInput < -0.01f)
+       else if (horizontalInput < -0.01f && countdownBossStarty == false)
        {
             plr.flipX = true;
             speed = 18;
@@ -350,7 +437,7 @@ public class Movement : MonoBehaviour
             {
                 {
 
-                    if (plr.flipX == false && isCooldown4 == false && grounded == true)
+                    if (plr.flipX == false && isCooldown4 == false && grounded == true && !isCooldown4)
                     {
                         moving = true;
                         boostAttack = false;
@@ -365,7 +452,7 @@ public class Movement : MonoBehaviour
                         // Debug.Log(-Time.deltaTime);
                         StartCoroutine(Cooldown4());
                     }
-                    else if (plr.flipX == true && isCooldown4 == false && grounded == true)
+                    else if (plr.flipX == true && isCooldown4 == false && grounded == true && !isCooldown4)
                     {
                         moving = true;
                             transform.position = Vector2.MoveTowards(transform.position, target + transform.position, speedBoost * Time.deltaTime); // Made by Jr (this was complicated, but done it myself to fix things)
